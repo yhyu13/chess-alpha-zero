@@ -81,7 +81,7 @@ class ChessPlayer:
     def ask_thought_about(self, board) -> HistoryItem:
         return self.thinking_history.get(board)
 
-    @profile
+    #@profile
     def search_moves(self, board):
         start = time.time()
         loop = self.loop
@@ -94,7 +94,7 @@ class ChessPlayer:
 
         coroutine_list.append(self.prediction_worker())
         loop.run_until_complete(asyncio.gather(*coroutine_list))
-        logger.debug(f"Search time per move: {time.time()-start}")
+        # logger.debug(f"Search time per move: {time.time()-start}")
         # uncomment to see profile result per move
         # raise
 
@@ -154,7 +154,7 @@ class ChessPlayer:
             
         return leaf_v
 
-    @profile
+    #@profile
     async def expand_and_evaluate(self, env):
         """expand new leaf
 
